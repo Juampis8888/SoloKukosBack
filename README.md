@@ -1,3 +1,3 @@
 # SoloKukosBack
-Iniciar el proyecto
+Iniciar el proyecto:
 npm run start
