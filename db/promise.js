@@ -22,7 +22,7 @@ const getTypeUsers = (request, response) => {
 }
 
 const getCategorys = (request, response) => {  
-    pool.query('SELECT * FROM public."Categorias" ORDER BY "Id" ASC  ;', (error, results) => {
+    pool.query('SELECT  "Categoria" AS title FROM public."Categorias";', (error, results) => {
       if (error) {
         throw error
       }
@@ -35,7 +35,7 @@ const getCategorys = (request, response) => {
 const getIdCategory = (request, response) => {
     
     const { categoria } = request.body;
-
+    console.log(categoria);
     pool.query('SELECT * FROM public."Categorias" where "Categoria"=$1;',[categoria], (error, results) => {
       if (error) {
         throw error
