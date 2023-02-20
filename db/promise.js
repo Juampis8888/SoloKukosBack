@@ -22,7 +22,7 @@ const getTypeUsers = (request, response) => {
 }
 
 const getCategorys = (request, response) => {  
-    pool.query('SELECT  "Categoria" AS title FROM public."Categorias";', (error, results) => {
+    pool.query('SELECT C."Id", C."Categoria" AS title FROM public."Categorias" C ORDER BY "Id" ASC ;', (error, results) => {
       if (error) {
         throw error
       }
@@ -79,7 +79,7 @@ const deleteCategory = (request, response) => {
 }
 
 const getProducts = (request, response) => {  
-  pool.query('SELECT * FROM public."Productos" ORDER BY "Id" ASC;', (error, results) => {
+  pool.query('SELECT P."Id", P."Nombre", P."Precio", P."Referencia",P."Talla",P."Color",P."IdCategoria",P."UrlImages",C."Categoria" FROM public."Productos" P JOIN public."Categorias" C ON P."IdCategoria"= C."Id";', (error, results) => {
     if (error) {
       throw error
     }
